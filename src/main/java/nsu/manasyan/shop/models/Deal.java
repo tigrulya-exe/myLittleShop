@@ -32,7 +32,7 @@ public class Deal {
         this.date = date;
     }
 
-    public void updateCart(String productName, int amount){
-        getCustomer().getShoppingCart().updateProduct(productName, amount);
+    public void updateCart(Product product, int amount){
+        getCustomer().getShoppingCart().updateProduct(product, amount);
     }
 }

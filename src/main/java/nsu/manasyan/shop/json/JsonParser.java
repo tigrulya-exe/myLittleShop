@@ -1,7 +1,6 @@
 package nsu.manasyan.shop.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nsu.manasyan.shop.models.Customer;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

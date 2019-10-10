@@ -24,7 +24,7 @@ public class ShopController {
     }
 
     @PatchMapping(BARTER_PATH + "/deals/{dealId}")
-    public ResponseEntity<Deal> getDeal(
+    public ResponseEntity<Deal> updateDeal(
             @PathVariable String dealId,
             @RequestBody List<DealUpdateTO> updatedProducts) {
 

@@ -5,6 +5,15 @@ public class CartContext {
     private int amount;
     private int sum;
 
+    //for json
+    public CartContext(){}
+
+    public CartContext(Product product, int amount){
+        this.product = product;
+        this.amount = amount;
+        this.sum = amount * product.getPrice();
+    }
+
     public Product getProduct() {
         return product;
     }

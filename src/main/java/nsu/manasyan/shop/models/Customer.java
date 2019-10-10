@@ -1,7 +1,5 @@
 package nsu.manasyan.shop.models;
 
-import java.util.UUID;
-
 public class Customer {
 //    private String id = UUID.randomUUID().toString();
     private String id;

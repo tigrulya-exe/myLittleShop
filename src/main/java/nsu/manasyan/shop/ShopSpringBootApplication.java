@@ -4,11 +4,12 @@ import nsu.manasyan.shop.json.JsonParser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.IOException;
 
 @SpringBootApplication
 public class ShopSpringBootApplication {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) {
+        System.out.println(JsonParser.class.getClassLoader().getResource("deal.json").getPath());
         SpringApplication.run(ShopSpringBootApplication.class, args);
     }
 }

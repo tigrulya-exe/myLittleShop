@@ -24,7 +24,7 @@ public class ShopService {
 
     public ResponseEntity<Deal> updateDeal(List<DealUpdateTO> updatedProducts, String dealId) {
         checkProductsExistence(updatedProducts);
-        updatedProducts.forEach(p -> dealRepository.updateDeal(dealId,p.getProductName(),p.getCount()));
+        updatedProducts.forEach(p -> dealRepository.updateDeal(dealId,productsRepository.getProduct(p.getProductName()),p.getCount()));
         return ResponseEntity.ok(dealRepository.getDeal(dealId));
     }
 

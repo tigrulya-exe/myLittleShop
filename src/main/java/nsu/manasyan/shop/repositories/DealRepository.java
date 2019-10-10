@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DealRepository {
     Deal getDeal(String dealId);
-    Deal updateDeal(String dealId, String productName, int amount);
+    Deal updateDeal(String dealId, Product product, int amount);
 }
