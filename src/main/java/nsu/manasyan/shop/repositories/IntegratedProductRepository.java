@@ -2,7 +2,6 @@ package nsu.manasyan.shop.repositories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nsu.manasyan.shop.exceptions.NotFoundException;
-import nsu.manasyan.shop.json.JsonParser;
 import nsu.manasyan.shop.models.Product;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +15,7 @@ public class IntegratedProductRepository implements ProductsRepository {
     private Map<String, Integer> products;
 
     public IntegratedProductRepository() throws IOException {
-        products = new ObjectMapper().readValue(JsonParser.class.getClassLoader().getResourceAsStream(PRODUCTS_PATH), Map.class);
+        products = new ObjectMapper().readValue(ProductsRepository.class.getClassLoader().getResourceAsStream(PRODUCTS_PATH), Map.class);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package nsu.manasyan.shop.repositories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nsu.manasyan.shop.json.JsonParser;
 import nsu.manasyan.shop.models.Deal;
 import nsu.manasyan.shop.models.Product;
 import org.springframework.stereotype.Repository;
@@ -16,7 +15,7 @@ public class JsonSingleDealRepository implements DealRepository{
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    private static final String DEAL_PATH = JsonParser.class.getClassLoader().getResource("deal.json").getPath();
+    private static final String DEAL_PATH = DealRepository.class.getClassLoader().getResource("deal.json").getPath();
 
     public JsonSingleDealRepository() throws IOException {
         deal = mapper.readValue(new File(DEAL_PATH), Deal.class);
