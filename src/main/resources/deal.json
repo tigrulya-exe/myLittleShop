@@ -1,0 +1,31 @@
+{
+  "id": "1223a834-deas-74t2-gva5-jia2e2di9y21",
+  "customer": {
+    "id": "ee9ba8c8-eaa1-11e9-81b4-2a2ae2dbcce4",
+    "name": "Petya",
+    "surname": "Pupkin",
+    "patronymic": "Vasilyevich",
+    "shoppingCart": {
+      "products": {
+        "Rediska": {
+          "product": {
+            "name": "Rediska",
+            "price": 89
+          },
+          "amount": 4,
+          "sum": 356
+        },
+        "Konoplya": {
+          "product": {
+            "name": "Konoplya",
+            "price": 100
+          },
+          "amount": 10,
+          "sum": 1000
+        }
+      }
+    }
+  },
+
+  "date" : "2019-10-09"
+}
