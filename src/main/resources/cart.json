@@ -15,14 +15,6 @@
       },
       "amount": 4,
       "sum": 356
-    },
-    "Konoplya": {
-      "product": {
-        "name": "Konoplya",
-        "price": 100
-      },
-      "amount": 10,
-      "sum": 1000
     }
   },
   "sum": 1356
