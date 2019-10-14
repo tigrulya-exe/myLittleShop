@@ -33,6 +33,10 @@ public class Deal {
     }
 
     public void updateCart(Product product, int amount){
-        getCustomer().getShoppingCart().updateProduct(product, amount);
+        customer.getShoppingCart().updateProduct(product, amount);
+    }
+
+    public void clear(){
+        customer.getShoppingCart().clear();
     }
 }

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface DealRepository {
     Deal getDeal(String dealId);
     Deal updateDeal(String dealId, Product product, int amount);
+    Deal deleteProduct(String productName);
 }

@@ -22,8 +22,18 @@ public class ShopService {
         return ResponseEntity.ok(dealRepository.getDeal(dealId));
     }
 
-    public ResponseEntity<Deal> updateDeal(List<DealUpdateTO> updatedProducts, String dealId) {
+    public ResponseEntity<Deal> updateDeal(List<DealUpdateTO> updatedProducts, String dealId){
         updatedProducts.forEach(p -> dealRepository.updateDeal(dealId,productsRepository.getProduct(p.getProductName()),p.getCount()));
+        return ResponseEntity.ok(dealRepository.getDeal(dealId));
+    }
+
+    public ResponseEntity<Deal> renewDeal(List<DealUpdateTO> updatedProducts, String dealId){
+        dealRepository.getDeal(dealId).clear();
+        return updateDeal(updatedProducts,dealId);
+    }
+
+    public ResponseEntity<Deal> deleteProductFromDeal(String dealId, String productName){
+        dealRepository.deleteProduct(productName);
         return ResponseEntity.ok(dealRepository.getDeal(dealId));
     }
 }

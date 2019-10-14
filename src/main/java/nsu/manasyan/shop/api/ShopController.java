@@ -23,11 +23,30 @@ public class ShopController {
         return shopService.getDeal(dealId);
     }
 
+    // we can use Map<String, Integer> instead of List<DealUpdateTO>,
+    // but option with list was chosen for extensibility
     @PatchMapping(BARTER_PATH + "/deals/{dealId}")
     public ResponseEntity<Deal> updateDeal(
             @PathVariable String dealId,
             @RequestBody List<DealUpdateTO> updatedProducts) {
 
         return shopService.updateDeal(updatedProducts,dealId);
+    }
+
+    // update and delete products, which are not in updatedProducts list
+    @PutMapping(BARTER_PATH + "/deals/{dealId}")
+    public ResponseEntity<Deal> renewDeal(
+            @PathVariable String dealId,
+            @RequestBody List<DealUpdateTO> updatedProducts) {
+
+        return shopService.renewDeal(updatedProducts,dealId);
+    }
+
+    @DeleteMapping(BARTER_PATH + "/deals/{dealId}/{productName}")
+    public ResponseEntity<Deal> deleteProductFromDeal(
+            @PathVariable String dealId,
+            @PathVariable String productName) {
+
+        return shopService.deleteProductFromDeal(dealId, String productName);
     }
 }

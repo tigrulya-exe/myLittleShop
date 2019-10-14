@@ -11,8 +11,9 @@ import java.io.IOException;
 
 @Repository
 public class JsonSingleDealRepository implements DealRepository{
+    private static final String DEAL_PROPERTY_NAME = "DEAL_JSON_PATH";
 
-    // in this variant we have only one deal
+    // in this implementation we have only one deal
     private Deal deal;
 
     private ObjectMapper mapper = new ObjectMapper();
@@ -20,7 +21,7 @@ public class JsonSingleDealRepository implements DealRepository{
     private String DEAL_PATH;
 
     public JsonSingleDealRepository() throws IOException {
-        String dealJsonFileName = ServerProperties.getProperty("DEAL_JSON_PATH");
+        String dealJsonFileName = ServerProperties.getProperty(DEAL_PROPERTY_NAME);
         DEAL_PATH = DealRepository.class.getClassLoader().getResource(dealJsonFileName).getPath();
         deal = mapper.readValue(new File(DEAL_PATH), Deal.class);
     }
@@ -29,6 +30,11 @@ public class JsonSingleDealRepository implements DealRepository{
         deal.updateCart(product, productAmount);
         serialize();
         return deal;
+    }
+
+    @Override
+    public Deal deleteProduct(String productName) {
+        deal.getCustomer().getShoppingCart()
     }
 
     @Override

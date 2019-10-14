@@ -41,8 +41,13 @@ public class ShoppingCart {
         updateSum();
     }
 
+    public void clear(){
+        products.clear();
+    }
+
     private void updateSum(){
         sum = 0;
         products.values().forEach(c -> sum += c.getSum());
     }
+
 }

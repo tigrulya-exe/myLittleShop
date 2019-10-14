@@ -18,7 +18,8 @@ public class IntegratedProductRepository implements ProductsRepository {
 
     public IntegratedProductRepository() throws IOException {
         PRODUCTS_PATH = ServerProperties.getProperty("PRODUCTS_JSON_PATH");
-        products = new ObjectMapper().readValue(ProductsRepository.class.getClassLoader().getResourceAsStream(PRODUCTS_PATH), Map.class);
+        ClassLoader classLoader = ProductsRepository.class.getClassLoader();
+        products = new ObjectMapper().readValue(classLoader.getResourceAsStream(PRODUCTS_PATH), Map.class);
     }
 
     @Override
