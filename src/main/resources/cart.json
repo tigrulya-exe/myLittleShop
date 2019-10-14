@@ -1,0 +1,29 @@
+{
+  "id": "ee9ba8c8-eaa1-11e9-81b4-2a2ae2dbcce4",
+  "holder": {
+    "id": "ee9ba8c8-eaa1-11e9-81b4-2a2ae2dbcce4",
+    "name": "Petya",
+    "surname": "Pupkin",
+    "patronymic": "Vasilyevich"
+  },
+
+  "products": {
+    "Rediska": {
+      "product": {
+        "name": "Rediska",
+        "price": 89
+      },
+      "amount": 4,
+      "sum": 356
+    },
+    "Konoplya": {
+      "product": {
+        "name": "Konoplya",
+        "price": 100
+      },
+      "amount": 10,
+      "sum": 1000
+    }
+  },
+  "sum": 1356
+}

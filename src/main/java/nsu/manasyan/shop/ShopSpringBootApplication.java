@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ShopSpringBootApplication {
 
     public static void main(String[] args) {
-        System.out.println(ShopSpringBootApplication.class.getClassLoader().getResource("deal.json").getPath());
         SpringApplication.run(ShopSpringBootApplication.class, args);
     }
 }

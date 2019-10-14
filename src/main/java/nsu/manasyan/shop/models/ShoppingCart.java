@@ -1,12 +1,12 @@
 package nsu.manasyan.shop.models;
 
-import nsu.manasyan.shop.exceptions.NotFoundException;
-import nsu.manasyan.shop.services.ShopService;
-
-import java.net.PortUnreachableException;
 import java.util.Map;
 
 public class ShoppingCart {
+    private String id;
+
+    private Customer holder;
+
     private Map<String, CartContext> products;
 
     private int sum;
@@ -19,15 +19,6 @@ public class ShoppingCart {
         this.products = products;
     }
 
-    public CartContext getCartContext(String productName){
-        CartContext cartContext;
-        if((cartContext = products.get(productName)) == null){
-            throw new NotFoundException("User doesn't have this product");
-        }
-
-        return cartContext;
-    }
-
     public int getSum() {
         return sum;
     }
@@ -36,9 +27,30 @@ public class ShoppingCart {
         this.sum = sum;
     }
 
-    public void updateProduct(Product product, int amount){
+    public Customer getHolder() {
+        return holder;
+    }
+
+    public void setHolder(Customer holder) {
+        this.holder = holder;
+        this.id = holder.getId();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void putProduct(Product product, int amount){
         products.put(product.getName(),new CartContext(product,amount));
         updateSum();
+    }
+
+    public void deleteProduct(String productName){
+        products.remove(productName);
     }
 
     public void clear(){

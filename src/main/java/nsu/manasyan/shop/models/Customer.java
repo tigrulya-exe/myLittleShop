@@ -1,14 +1,11 @@
 package nsu.manasyan.shop.models;
 
 public class Customer {
-//    private String id = UUID.randomUUID().toString();
     private String id;
 
     private String name;
     private String surname;
     private String patronymic;
-
-    private ShoppingCart shoppingCart;
 
     public String getId() {
         return id;
@@ -40,13 +37,5 @@ public class Customer {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
-    }
-
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
     }
 }
