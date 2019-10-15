@@ -10,10 +10,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * Конфигурация для отображения <a href="http://localhost:8081/swagger-ui.html#/">swagger-документации</a>
- * (Без необходимости не редактировать)
- */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig extends WebMvcConfigurationSupport {
