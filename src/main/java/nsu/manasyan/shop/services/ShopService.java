@@ -25,7 +25,11 @@ public class ShopService {
     }
 
     public ResponseEntity<ShoppingCart> updateShoppingCart(List<DealUpdateTO> updatedProducts, String shoppingCartId){
-        updatedProducts.forEach(p -> cartRepository.updateCart(shoppingCartId,productsRepository.getProduct(p.getProductName()),p.getCount()));
+        updatedProducts.forEach(p -> {
+            String productName = p.getProductName();
+            int productCount = p.getCount();
+            cartRepository.updateCart(shoppingCartId,productsRepository.getProduct(productName),productCount);
+        });
         return ResponseEntity.ok(cartRepository.getCart(shoppingCartId));
     }
 

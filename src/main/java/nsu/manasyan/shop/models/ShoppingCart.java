@@ -55,6 +55,7 @@ public class ShoppingCart {
 
     public void clear(){
         products.clear();
+
     }
 
     private void updateSum(){

@@ -24,11 +24,12 @@ public class ShopController {
         return shopService.getDeal(cartId);
     }
 
-    // we can use Map<String, Integer> instead of List<DealUpdateTO>,
-    // but option with list was chosen for extensibility
+    // update products, which are in updatedProducts list
     @PatchMapping(BARTER_PATH + "/carts/{dealId}")
     public ResponseEntity<ShoppingCart> updateShoppingCart(
             @PathVariable String dealId,
+            // we can use Map<String, Integer> instead of List<DealUpdateTO>,
+            // but option with list was chosen for extensibility
             @RequestBody List<DealUpdateTO> updatedProducts) {
 
         return shopService.updateShoppingCart(updatedProducts,dealId);
