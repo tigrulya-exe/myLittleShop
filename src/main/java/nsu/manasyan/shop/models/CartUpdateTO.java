@@ -1,6 +1,6 @@
 package nsu.manasyan.shop.models;
 
-public class DealUpdateTO {
+public class CartUpdateTO {
     private String productName;
     private int count;
 

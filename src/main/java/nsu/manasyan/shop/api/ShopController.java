@@ -1,7 +1,8 @@
 package nsu.manasyan.shop.api;
 
-import nsu.manasyan.shop.models.Deal;
-import nsu.manasyan.shop.models.DealUpdateTO;
+import io.swagger.annotations.ApiOperation;
+import nsu.manasyan.shop.models.CartUpdateTO;
+import nsu.manasyan.shop.models.Order;
 import nsu.manasyan.shop.models.ShoppingCart;
 import nsu.manasyan.shop.services.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,38 +18,42 @@ public class ShopController {
 
     private static final String BARTER_PATH = "/api/shop";
 
-    @GetMapping(BARTER_PATH + "/carts/{cartId}/deal")
-    public ResponseEntity<Deal> getDeal(
+    @GetMapping(BARTER_PATH + "/carts/{cartId}/order")
+    @ApiOperation(value = "Получение данных о текущем заказе")
+    public ResponseEntity<Order> getOrder(
             @PathVariable String cartId) {
 
         return shopService.getDeal(cartId);
     }
 
     // update products, which are in updatedProducts list
-    @PatchMapping(BARTER_PATH + "/carts/{dealId}")
+    @PatchMapping(BARTER_PATH + "/carts/{cartId}")
+    @ApiOperation(value = "Обновление корзины без удаления необновленных продуктов")
     public ResponseEntity<ShoppingCart> updateShoppingCart(
-            @PathVariable String dealId,
-            // we can use Map<String, Integer> instead of List<DealUpdateTO>,
+            @PathVariable String cartId,
+            // we can use Map<String, Integer> instead of List<CartUpdateTO>,
             // but option with list was chosen for extensibility
-            @RequestBody List<DealUpdateTO> updatedProducts) {
+            @RequestBody List<CartUpdateTO> updatedProducts) {
 
-        return shopService.updateShoppingCart(updatedProducts,dealId);
+        return shopService.updateShoppingCart(updatedProducts,cartId);
     }
 
     // update and delete products, which are not in updatedProducts list
-    @PutMapping(BARTER_PATH + "/carts/{dealId}")
+    @PutMapping(BARTER_PATH + "/carts/{cartId}")
+    @ApiOperation(value = "Полное обновление корзины (удаление необновленных продуктов)")
     public ResponseEntity<ShoppingCart> renewShoppingCart(
-            @PathVariable String dealId,
-            @RequestBody List<DealUpdateTO> updatedProducts) {
+            @PathVariable String cartId,
+            @RequestBody List<CartUpdateTO> updatedProducts) {
 
-        return shopService.renewShoppingCart(updatedProducts,dealId);
+        return shopService.renewShoppingCart(updatedProducts,cartId);
     }
 
-    @DeleteMapping(BARTER_PATH + "/carts/{dealId}/{productName}")
+    @DeleteMapping(BARTER_PATH + "/carts/{cartId}/{productName}")
+    @ApiOperation(value = "Удалить предмет из корзины")
     public ResponseEntity<ShoppingCart> deleteProductFromShoppingCart(
-            @PathVariable String dealId,
+            @PathVariable String cartId,
             @PathVariable String productName) {
 
-        return shopService.deleteProductFromShoppingCart(dealId, productName);
+        return shopService.deleteProductFromShoppingCart(cartId, productName);
     }
 }

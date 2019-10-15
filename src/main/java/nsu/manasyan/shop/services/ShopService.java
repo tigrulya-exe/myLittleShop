@@ -1,7 +1,7 @@
 package nsu.manasyan.shop.services;
 
-import nsu.manasyan.shop.models.Deal;
-import nsu.manasyan.shop.models.DealUpdateTO;
+import nsu.manasyan.shop.models.Order;
+import nsu.manasyan.shop.models.CartUpdateTO;
 import nsu.manasyan.shop.models.ShoppingCart;
 import nsu.manasyan.shop.repositories.CartRepository;
 import nsu.manasyan.shop.repositories.ProductsRepository;
@@ -19,12 +19,12 @@ public class ShopService {
     @Autowired
     private ProductsRepository productsRepository;
 
-    public ResponseEntity<Deal> getDeal(String cartId) {
-        Deal deal = new Deal(cartRepository.getCart(cartId));
-        return ResponseEntity.ok(deal);
+    public ResponseEntity<Order> getDeal(String cartId) {
+        Order order = new Order(cartRepository.getCart(cartId));
+        return ResponseEntity.ok(order);
     }
 
-    public ResponseEntity<ShoppingCart> updateShoppingCart(List<DealUpdateTO> updatedProducts, String shoppingCartId){
+    public ResponseEntity<ShoppingCart> updateShoppingCart(List<CartUpdateTO> updatedProducts, String shoppingCartId){
         updatedProducts.forEach(p -> {
             String productName = p.getProductName();
             int productCount = p.getCount();
@@ -33,7 +33,7 @@ public class ShopService {
         return ResponseEntity.ok(cartRepository.getCart(shoppingCartId));
     }
 
-    public ResponseEntity<ShoppingCart> renewShoppingCart(List<DealUpdateTO> updatedProducts, String cartId){
+    public ResponseEntity<ShoppingCart> renewShoppingCart(List<CartUpdateTO> updatedProducts, String cartId){
         ShoppingCart cart = cartRepository.getCart(cartId);
         cart.clear();
         return updateShoppingCart(updatedProducts,cartId);
